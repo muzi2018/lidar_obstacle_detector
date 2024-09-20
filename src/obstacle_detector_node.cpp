@@ -135,22 +135,41 @@ ObstacleDetectorNode::ObstacleDetectorNode() : tf2_listener(tf2_buffer) {
 void ObstacleDetectorNode::lidarPointsCallback(
     const sensor_msgs::PointCloud2::ConstPtr &lidar_points) {
   ROS_DEBUG("lidar points recieved");
-//   std::cout << "---- received point -----" << std::endl;
-  // Time the whole process
+  std::cout << "--- lidar points recieved ---" << std::endl;
+  std::cout << "--- lidar points information" << std::endl;
+
   const auto start_time = std::chrono::steady_clock::now();
   const auto pointcloud_header = lidar_points->header;
+  std::cout << "pointcloud_header = " << pointcloud_header << std::endl;
   bbox_source_frame_ = lidar_points->header.frame_id;
+  std::cout << "bbox_source_frame_ = " << bbox_source_frame_ << std::endl;
 
-  pcl::PointCloud<pcl::PointXYZ>::Ptr raw_cloud(
-      new pcl::PointCloud<pcl::PointXYZ>);
+
+  //**1. pcl::PointXYZ is a PCL structure that contains x, y, and z coordinates for a point. */
+  pcl::PointCloud<pcl::PointXYZ>::Ptr raw_cloud(new pcl::PointCloud<pcl::PointXYZ>);  
+  //**2. Convert ROS message to PCL PointCloud */ 
   pcl::fromROSMsg(*lidar_points, *raw_cloud);
 
-  // Downsampleing, ROI, and removing the car roof
+  std::cout << "--- filtered_cloud" << std::endl;
+  //**3. Crop the region of interest (ROI) to focus on a specific part of the point cloud.*
+  // VOXEL_GRID_SIZE; ROI_MIN_POINT; ROI_MAX_POINT
+  /**
+   * ----------
+   * | ROI|    |
+   * | ___|    |
+   * |         |
+   * ----------
+   */
   auto filtered_cloud = obstacle_detector->filterCloud(
       raw_cloud, VOXEL_GRID_SIZE, ROI_MIN_POINT, ROI_MAX_POINT);
     // ROS_INFO("Filtered cloud size: %lu", filtered_cloud->points.size());
 
-  // Segment the groud plane and obstacles
+  /**
+   * 4. Segment the groud plane and obstacles
+   * The function extracts the largest planar component from the input point cloud, which is often used in robotics and autonomous systems to identify flat surfaces like roads, walls, or floors.
+   * 30 - max_iterations
+   * GROUND_THRESH - The distance threshold for a point to be considered part of the plane.
+   */
   auto segmented_clouds =
       obstacle_detector->segmentPlane(filtered_cloud, 30, GROUND_THRESH);
     // if (segmented_clouds.first->empty()) {
@@ -158,17 +177,27 @@ void ObstacleDetectorNode::lidarPointsCallback(
     //     return;
     // }
 
-  // Cluster objects
-  auto cloud_clusters =
-      obstacle_detector->clustering(segmented_clouds.first, CLUSTER_THRESH,
-                                    CLUSTER_MIN_SIZE, CLUSTER_MAX_SIZE);
 
-  // Publish ground cloud and obstacle cloud
+  /**
+   *5.Perform Euclidean clustering on the input point cloud to identify separate clusters of points, which represent distinct objects or obstacles.
+   *CLUSTER_THRESH - The maximum distance between points to be considered part of the same cluster. 
+    CLUSTER_MIN_SIZE - The minimum number of points required to form a valid cluster.
+    CLUSTER_MAX_SIZE - The maximum number of points allowed in a cluster.
+
+    return: The function returns a vector of point clouds, where each point cloud represents a distinct cluster of points that are spatially close to each other.
+   */
+  auto cloud_clusters =
+      obstacle_detector->clustering(segmented_clouds.first, 
+                                    CLUSTER_THRESH,
+                                    CLUSTER_MIN_SIZE, 
+                                    CLUSTER_MAX_SIZE);
+
+  //6. Publish ground cloud and obstacle cloud
   publishClouds(std::move(segmented_clouds), pointcloud_header);
-  // Publish Obstacles
+  //7. Publish Obstacles
   publishDetectedObjects(std::move(cloud_clusters), pointcloud_header);
 
-  // Time the whole process
+  //8. Time the whole process
   const auto end_time = std::chrono::steady_clock::now();
   const auto elapsed_time =
       std::chrono::duration_cast<std::chrono::milliseconds>(end_time -

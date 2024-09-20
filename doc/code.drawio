@@ -1,0 +1,66 @@
+<mxfile host="65bd71144e">
+    <diagram id="YEQUNbNia4bDIrSxjwtk" name="Page-1">
+        <mxGraphModel dx="1481" dy="655" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="&lt;div style=&quot;color: rgb(218, 218, 218); background-color: rgb(30, 30, 30); font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #c8c8c8;&quot;&gt;lidar_obstacle_detector&lt;/span&gt;&lt;span style=&quot;color: #b4b4b4;&quot;&gt;::&lt;/span&gt;ObstacleDetectorNode&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="310" width="460" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="170" y="354.5" as="sourcePoint"/>
+                        <mxPoint x="240" y="354.5" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="4" value="&lt;br&gt;&lt;div style=&quot;color: rgb(218, 218, 218); background-color: rgb(30, 30, 30); font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;subscribe: sub_lidar_points&lt;/div&gt;&lt;div style=&quot;color: rgb(218, 218, 218); background-color: rgb(30, 30, 30); font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;callback -&amp;nbsp;&lt;span style=&quot;color: rgb(220, 220, 170);&quot;&gt;lidarPointsCallback{&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(218, 218, 218); background-color: rgb(30, 30, 30); font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;span style=&quot;color: rgb(220, 220, 170);&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(218, 218, 218); background-color: rgb(30, 30, 30); font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;span style=&quot;color: rgb(220, 220, 170);&quot;&gt;}&lt;/span&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="-100" y="310" width="270" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="lidar points frame" style="shape=table;startSize=30;container=1;collapsible=0;childLayout=tableLayout;" vertex="1" parent="1">
+                    <mxGeometry x="-100" y="410" width="230" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="14">
+                    <mxGeometry y="30" width="230" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="D435i_camera_color_optical_frame" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="15">
+                    <mxGeometry width="230" height="40" as="geometry">
+                        <mxRectangle width="230" height="40" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="17" value="bbox_source_frame_" style="shape=table;startSize=30;container=1;collapsible=0;childLayout=tableLayout;" vertex="1" parent="1">
+                    <mxGeometry x="-100" y="490" width="230" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="17">
+                    <mxGeometry y="30" width="230" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="D435i_camera_color_optical_frame" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="18">
+                    <mxGeometry width="230" height="40" as="geometry">
+                        <mxRectangle width="230" height="40" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="26" value="sensor_msgs/PointCloud2" style="shape=table;startSize=30;container=1;collapsible=0;childLayout=tableLayout;" vertex="1" parent="1">
+                    <mxGeometry x="-450" y="400" width="280" height="490" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="26">
+                    <mxGeometry y="30" width="280" height="460" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="&lt;div&gt;std_msgs/Header header&lt;/div&gt;&lt;div&gt;&amp;nbsp; uint32 seq&lt;/div&gt;&lt;div&gt;&amp;nbsp; time stamp&lt;/div&gt;&lt;div&gt;&amp;nbsp; string frame_id&lt;/div&gt;&lt;div&gt;uint32 height&lt;/div&gt;&lt;div&gt;uint32 width&lt;/div&gt;&lt;div&gt;sensor_msgs/PointField[] fields&lt;/div&gt;&lt;div&gt;&amp;nbsp; uint8 INT8=1&lt;/div&gt;&lt;div&gt;&amp;nbsp; uint8 UINT8=2&lt;/div&gt;&lt;div&gt;&amp;nbsp; uint8 INT16=3&lt;/div&gt;&lt;div&gt;&amp;nbsp; uint8 UINT16=4&lt;/div&gt;&lt;div&gt;&amp;nbsp; uint8 INT32=5&lt;/div&gt;&lt;div&gt;&amp;nbsp; uint8 UINT32=6&lt;/div&gt;&lt;div&gt;&amp;nbsp; uint8 FLOAT32=7&lt;/div&gt;&lt;div&gt;&amp;nbsp; uint8 FLOAT64=8&lt;/div&gt;&lt;div&gt;&amp;nbsp; string name&lt;/div&gt;&lt;div&gt;&amp;nbsp; uint32 offset&lt;/div&gt;&lt;div&gt;&amp;nbsp; uint8 datatype&lt;/div&gt;&lt;div&gt;&amp;nbsp; uint32 count&lt;/div&gt;&lt;div&gt;bool is_bigendian&lt;/div&gt;&lt;div&gt;uint32 point_step&lt;/div&gt;&lt;div&gt;uint32 row_step&lt;/div&gt;&lt;div&gt;uint8[] data&lt;/div&gt;&lt;div&gt;bool is_dense&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="27">
+                    <mxGeometry width="280" height="460" as="geometry">
+                        <mxRectangle width="280" height="460" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="32" value="Callback 1" style="shape=table;startSize=30;container=1;collapsible=0;childLayout=tableLayout;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="400" width="460" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="32">
+                    <mxGeometry y="30" width="460" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="33">
+                    <mxGeometry width="460" height="40" as="geometry">
+                        <mxRectangle width="460" height="40" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
