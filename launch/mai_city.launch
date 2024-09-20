@@ -10,7 +10,7 @@
     <param name="jsk_bboxes_topic"                    value="obstacle_detector/jsk_bboxes"/>
     <param name="autoware_objects_topic"              value="obstacle_detector/objects"/>
     <!-- Parameters -->
-    <param name="bbox_target_frame"                   value="D435i_camera_lik"/>
+    <param name="bbox_target_frame"                   value="pelvis"/>
   </node>
 
   <!-- Dynamic Reconfigure GUI -->

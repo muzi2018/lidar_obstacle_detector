@@ -135,12 +135,12 @@ ObstacleDetectorNode::ObstacleDetectorNode() : tf2_listener(tf2_buffer) {
 void ObstacleDetectorNode::lidarPointsCallback(
     const sensor_msgs::PointCloud2::ConstPtr &lidar_points) {
   ROS_DEBUG("lidar points recieved");
-  std::cout << "--- lidar points recieved ---" << std::endl;
-  std::cout << "--- lidar points information" << std::endl;
+  // std::cout << "--- lidar points recieved ---" << std::endl;
+  // std::cout << "--- lidar points information" << std::endl;
 
   const auto start_time = std::chrono::steady_clock::now();
   const auto pointcloud_header = lidar_points->header;
-  std::cout << "pointcloud_header = " << pointcloud_header << std::endl;
+  // std::cout << "pointcloud_header = " << pointcloud_header << std::endl;
   bbox_source_frame_ = lidar_points->header.frame_id;
   std::cout << "bbox_source_frame_ = " << bbox_source_frame_ << std::endl;
 
@@ -150,7 +150,7 @@ void ObstacleDetectorNode::lidarPointsCallback(
   //**2. Convert ROS message to PCL PointCloud */ 
   pcl::fromROSMsg(*lidar_points, *raw_cloud);
 
-  std::cout << "--- filtered_cloud" << std::endl;
+  // std::cout << "--- filtered_cloud" << std::endl;
   //**3. Crop the region of interest (ROI) to focus on a specific part of the point cloud.*
   // VOXEL_GRID_SIZE; ROI_MIN_POINT; ROI_MAX_POINT
   /**
@@ -278,6 +278,7 @@ void ObstacleDetectorNode::publishDetectedObjects(
   // Lookup for frame transform between the lidar frame and the target frame
   auto bbox_header = header;
   bbox_header.frame_id = bbox_target_frame_;
+  std::cout << "bbox_target_frame_ = " << bbox_target_frame_ << std::endl;
   geometry_msgs::TransformStamped transform_stamped;
   try {
     transform_stamped = tf2_buffer.lookupTransform(
@@ -308,13 +309,20 @@ void ObstacleDetectorNode::publishDetectedObjects(
   // autoware msg formats
   for (auto &box : curr_boxes_) {
     geometry_msgs::Pose pose, pose_transformed;
-    pose.position.x = box.position(0);
-    pose.position.y = box.position(1);
-    pose.position.z = box.position(2);
+    pose.position.x = box.position(0) ;
+    pose.position.y = box.position(1) ;
+    pose.position.z = box.position(2) ;
     pose.orientation.w = box.quaternion.w();
     pose.orientation.x = box.quaternion.x();
     pose.orientation.y = box.quaternion.y();
     pose.orientation.z = box.quaternion.z();
+    // std::cout << "box.quaternion : " << std::endl;
+    // std::cout << box.quaternion.w() << std::endl;
+    // std::cout << box.quaternion.x() << std::endl;
+    // std::cout << box.quaternion.y() << std::endl;
+    // std::cout << box.quaternion.z() << std::endl;
+
+    /**transform the pose in camera to pelvis */
     tf2::doTransform(pose, pose_transformed, transform_stamped);
 
     jsk_bboxes.boxes.emplace_back(

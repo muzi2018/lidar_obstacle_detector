@@ -55,10 +55,19 @@
                 <mxCell id="33" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="32">
                     <mxGeometry y="30" width="460" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="34" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="33">
+                <mxCell id="34" value="&lt;div style=&quot;color: rgb(218, 218, 218); background-color: rgb(30, 30, 30); font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;lidarPointsCallback&lt;/span&gt;&lt;/div&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="33">
                     <mxGeometry width="460" height="40" as="geometry">
                         <mxRectangle width="460" height="40" as="alternateBounds"/>
                     </mxGeometry>
+                </mxCell>
+                <mxCell id="35" value="bbox_source_frame_ = D435i_camera_color_optical_frame&lt;br&gt;The name of the &lt;strong&gt;source frame&lt;/strong&gt; of the original data (e.g., the LiDAR frame). This is the coordinate frame the point cloud data is currently in." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="190" y="830" width="340" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="bbox_target_frame_ = pelvis&lt;br&gt;The name of the &lt;strong&gt;target frame&lt;/strong&gt; you want the object to be transformed into. This could be, for example, &lt;code&gt;base_link&lt;/code&gt;, which represents the vehicle's main body frame." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="190" y="910" width="340" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="&lt;div style=&quot;color: rgb(218, 218, 218); background-color: rgb(30, 30, 30); font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;transform_stamped: &lt;br&gt;&lt;span style=&quot;color: rgb(240, 240, 240); font-family: Helvetica; font-size: 12px; background-color: rgb(42, 37, 47);&quot;&gt;D435i_camera_color_optical_frame -&amp;gt;&amp;nbsp;&lt;/span&gt;pelvis&amp;nbsp;&amp;nbsp;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="60" y="770" width="490" height="60" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
