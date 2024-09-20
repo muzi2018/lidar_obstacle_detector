@@ -280,6 +280,16 @@ Box ObstacleDetector<PointT>::axisAlignedBoundingBox(
   const Eigen::Vector3f dimension((max_pt.x - min_pt.x), (max_pt.y - min_pt.y),
                                   (max_pt.z - min_pt.z));
 
+  // pcl::PointCloud<pcl::PointXYZ>::Ptr pca_projected_cloud(
+  //     new pcl::PointCloud<pcl::PointXYZ>);
+  // pcl::PCA<pcl::PointXYZ> pca;
+  // pca.setInputCloud(cluster);
+  // pca.project(*cluster, *pca_projected_cloud);
+  // const auto eigen_vectors = pca.getEigenVectors();
+  // // Final transform
+  // const Eigen::Quaternionf quaternion(
+  //     eigen_vectors); 
+
   return Box(id, position, dimension);
 }
 

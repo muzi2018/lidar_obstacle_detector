@@ -325,6 +325,11 @@ void ObstacleDetectorNode::publishDetectedObjects(
     /**transform the pose in camera to pelvis */
     tf2::doTransform(pose, pose_transformed, transform_stamped);
 
+    // pose_transformed.orientation.w = box.quaternion.w();
+    // pose_transformed.orientation.x = box.quaternion.x();
+    // pose_transformed.orientation.y = box.quaternion.y();
+    // pose_transformed.orientation.z = box.quaternion.z();
+
     jsk_bboxes.boxes.emplace_back(
         transformJskBbox(box, bbox_header, pose_transformed));
     autoware_objects.objects.emplace_back(
