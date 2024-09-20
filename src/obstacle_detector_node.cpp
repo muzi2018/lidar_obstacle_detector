@@ -261,6 +261,7 @@ void ObstacleDetectorNode::publishDetectedObjects(
     const std_msgs::Header &header) {
   for (auto &cluster : cloud_clusters) {
     // Create Bounding Boxes
+    std::cout << "--- cloud_clusters ---" << std::endl;
     Box box =
         USE_PCA_BOX
             ? obstacle_detector->pcaBoundingBox(cluster, obstacle_id_)

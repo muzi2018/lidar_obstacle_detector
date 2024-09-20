@@ -263,7 +263,7 @@ ObstacleDetector<PointT>::clustering(
   // std::chrono::duration_cast<std::chrono::milliseconds>(end_time -
   // start_time); std::cout << "clustering took " << elapsed_time.count() << "
   // milliseconds and found " << clusters.size() << " clusters" << std::endl;
-
+  // std::cout << "clusters.size() = " << clusters.size() << std::endl;
   return clusters;
 }
 
