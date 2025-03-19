@@ -1,16 +1,15 @@
 Panels:
   - Class: rviz/Displays
-    Help Height: 180
+    Help Height: 78
     Name: Displays
     Property Tree Widget:
       Expanded:
         - /Global Options1
         - /Status1
-        - /RobotModel1/Status1
-        - /DepthCloud1
-        - /DepthCloud1/Auto Size1
-      Splitter Ratio: 0.6352201104164124
-    Tree Height: 642
+        - /RobotModel1
+        - /TF1/Frames1
+      Splitter Ratio: 0.5
+    Tree Height: 1229
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -54,90 +53,6 @@ Visualization Manager:
       Plane Cell Count: 10
       Reference Frame: <Fixed Frame>
       Value: true
-    - Alpha: 1
-      Autocompute Intensity Bounds: true
-      Autocompute Value Bounds:
-        Max Value: 4.370005130767822
-        Min Value: -1.7799855470657349
-        Value: true
-      Axis: Z
-      Channel Name: intensity
-      Class: rviz/PointCloud2
-      Color: 255; 255; 255
-      Color Transformer: Intensity
-      Decay Time: 0
-      Enabled: false
-      Invert Rainbow: false
-      Max Color: 255; 255; 255
-      Min Color: 0; 0; 0
-      Name: Velodyne Points
-      Position Transformer: XYZ
-      Queue Size: 10
-      Selectable: true
-      Size (Pixels): 3
-      Size (m): 0.009999999776482582
-      Style: Flat Squares
-      Topic: /velodyne_points
-      Unreliable: false
-      Use Fixed Frame: true
-      Use rainbow: true
-      Value: false
-    - Alpha: 1
-      Autocompute Intensity Bounds: true
-      Autocompute Value Bounds:
-        Max Value: 10
-        Min Value: -10
-        Value: true
-      Axis: Z
-      Channel Name: intensity
-      Class: rviz/PointCloud2
-      Color: 114; 159; 207
-      Color Transformer: FlatColor
-      Decay Time: 0
-      Enabled: true
-      Invert Rainbow: false
-      Max Color: 255; 255; 255
-      Min Color: 0; 0; 0
-      Name: Obstacle Cloud
-      Position Transformer: XYZ
-      Queue Size: 10
-      Selectable: true
-      Size (Pixels): 3
-      Size (m): 0.05000000074505806
-      Style: Flat Squares
-      Topic: /obstacle_detector/cloud_clusters
-      Unreliable: false
-      Use Fixed Frame: true
-      Use rainbow: true
-      Value: true
-    - Alpha: 1
-      Autocompute Intensity Bounds: true
-      Autocompute Value Bounds:
-        Max Value: 10
-        Min Value: -10
-        Value: true
-      Axis: Z
-      Channel Name: intensity
-      Class: rviz/PointCloud2
-      Color: 0; 255; 0
-      Color Transformer: FlatColor
-      Decay Time: 0
-      Enabled: true
-      Invert Rainbow: false
-      Max Color: 255; 255; 255
-      Min Color: 0; 0; 0
-      Name: Ground Cloud
-      Position Transformer: XYZ
-      Queue Size: 10
-      Selectable: true
-      Size (Pixels): 3
-      Size (m): 0.05000000074505806
-      Style: Flat Squares
-      Topic: /obstacle_detector/cloud_ground
-      Unreliable: false
-      Use Fixed Frame: true
-      Use rainbow: true
-      Value: true
     - Class: jsk_rviz_plugin/BoundingBoxArray
       Enabled: true
       Name: BoundingBoxArray
@@ -146,12 +61,16 @@ Visualization Manager:
       Unreliable: false
       Value: true
       alpha: 0.800000011920929
+      alpha max: 1
+      alpha method: flat
+      alpha min: 0
       color: 25; 255; 0
-      coloring: Label
+      coloring: Auto
       line width: 0.004999999888241291
       only edge: false
       show coords: false
-    - Alpha: 1
+      value threshold: 0
+    - Alpha: 0.10000000149011612
       Class: rviz/RobotModel
       Collision Enabled: false
       Enabled: true
@@ -541,20 +460,22 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        # nicla_camera:
-        #   Alpha: 1
-        #   Show Axes: false
-        #   Show Trail: false
-        # nicla_tof:
-        #   Alpha: 1
-        #   Show Axes: false
-        #   Show Trail: false
         pelvis:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
         torso_2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        velodyne_calib:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        velodyne_calib_base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -584,47 +505,347 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        world:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
       Name: RobotModel
-      Robot Description: /robot_description_gz
+      Robot Description: robot_description
       TF Prefix: ""
       Update Interval: 0
       Value: true
       Visual Enabled: true
-    - Alpha: 1
-      Auto Size:
-        Auto Size Factor: 1
-        Value: true
-      Autocompute Intensity Bounds: true
-      Autocompute Value Bounds:
-        Max Value: 10
-        Min Value: -10
-        Value: true
-      Axis: Z
-      Channel Name: intensity
-      Class: rviz/DepthCloud
-      Color: 255; 255; 255
-      Color Image Topic: /D435i_camera/color/image_raw
-      Color Transformer: RGB8
-      Color Transport Hint: raw
-      Decay Time: 0
-      Depth Map Topic: /D435i_camera/aligned_depth_to_color/image_raw
-      Depth Map Transport Hint: raw
+    - Class: rviz/TF
       Enabled: true
-      Invert Rainbow: false
-      Max Color: 255; 255; 255
-      Min Color: 0; 0; 0
-      Name: DepthCloud
-      Occlusion Compensation:
-        Occlusion Time-Out: 30
-        Value: false
-      Position Transformer: XYZ
-      Queue Size: 5
-      Selectable: true
-      Size (Pixels): 3
-      Style: Flat Squares
-      Topic Filter: true
-      Use Fixed Frame: true
-      Use rainbow: true
+      Filter (blacklist): ""
+      Filter (whitelist): ""
+      Frame Timeout: 15
+      Frames:
+        All Enabled: false
+        D435_head_camera_accel_frame:
+          Value: false
+        D435_head_camera_accel_optical_frame:
+          Value: false
+        D435_head_camera_bottom_screw_frame:
+          Value: false
+        D435_head_camera_color_frame:
+          Value: false
+        D435_head_camera_color_optical_frame:
+          Value: true
+        D435_head_camera_depth_frame:
+          Value: false
+        D435_head_camera_depth_optical_frame:
+          Value: false
+        D435_head_camera_gyro_frame:
+          Value: false
+        D435_head_camera_gyro_optical_frame:
+          Value: false
+        D435_head_camera_left_ir_frame:
+          Value: false
+        D435_head_camera_left_ir_optical_frame:
+          Value: false
+        D435_head_camera_link:
+          Value: false
+        D435_head_camera_right_ir_frame:
+          Value: false
+        D435_head_camera_right_ir_optical_frame:
+          Value: false
+        D435i_camera_accel_frame:
+          Value: false
+        D435i_camera_accel_optical_frame:
+          Value: false
+        D435i_camera_bottom_screw_frame:
+          Value: false
+        D435i_camera_color_frame:
+          Value: false
+        D435i_camera_color_optical_frame:
+          Value: false
+        D435i_camera_depth_frame:
+          Value: false
+        D435i_camera_depth_optical_frame:
+          Value: false
+        D435i_camera_gyro_frame:
+          Value: false
+        D435i_camera_gyro_optical_frame:
+          Value: false
+        D435i_camera_left_ir_frame:
+          Value: false
+        D435i_camera_left_ir_optical_frame:
+          Value: false
+        D435i_camera_link:
+          Value: false
+        D435i_camera_right_ir_frame:
+          Value: false
+        D435i_camera_right_ir_optical_frame:
+          Value: false
+        T265_camera_accel_frame:
+          Value: false
+        T265_camera_accel_optical_frame:
+          Value: false
+        T265_camera_fisheye1_optical_frame:
+          Value: false
+        T265_camera_fisheye1_rgb_frame:
+          Value: false
+        T265_camera_fisheye2_optical_frame:
+          Value: false
+        T265_camera_fisheye2_rgb_frame:
+          Value: false
+        T265_camera_gyro_frame:
+          Value: false
+        T265_camera_gyro_optical_frame:
+          Value: false
+        T265_camera_link:
+          Value: false
+        T265_camera_pose_frame:
+          Value: false
+        ankle1_1:
+          Value: false
+        ankle1_2:
+          Value: false
+        ankle1_3:
+          Value: false
+        ankle1_4:
+          Value: false
+        ankle2_1:
+          Value: false
+        ankle2_2:
+          Value: false
+        ankle2_3:
+          Value: false
+        ankle2_4:
+          Value: false
+        arm1_1:
+          Value: false
+        arm1_2:
+          Value: false
+        arm1_3:
+          Value: false
+        arm1_4:
+          Value: false
+        arm1_5:
+          Value: false
+        arm1_6:
+          Value: false
+        arm1_8:
+          Value: false
+        arm2_1:
+          Value: false
+        arm2_2:
+          Value: false
+        arm2_3:
+          Value: false
+        arm2_4:
+          Value: false
+        arm2_5:
+          Value: false
+        arm2_6:
+          Value: false
+        arm2_8:
+          Value: false
+        ball1:
+          Value: false
+        ball1_tip:
+          Value: false
+        base_link:
+          Value: false
+        contact_1:
+          Value: false
+        contact_2:
+          Value: false
+        contact_3:
+          Value: false
+        contact_4:
+          Value: false
+        d435_head_motor:
+          Value: false
+        dagana_2_bottom_link:
+          Value: false
+        dagana_2_tcp:
+          Value: false
+        dagana_2_top_link:
+          Value: false
+        hip1_1:
+          Value: false
+        hip1_2:
+          Value: false
+        hip1_3:
+          Value: false
+        hip1_4:
+          Value: false
+        hip2_1:
+          Value: false
+        hip2_2:
+          Value: false
+        hip2_3:
+          Value: false
+        hip2_4:
+          Value: false
+        imu_link:
+          Value: false
+        knee_1:
+          Value: false
+        knee_2:
+          Value: false
+        knee_3:
+          Value: false
+        knee_4:
+          Value: false
+        neck_1:
+          Value: false
+        pelvis:
+          Value: true
+        torso_2:
+          Value: false
+        velodyne_calib:
+          Value: false
+        velodyne_calib_base_link:
+          Value: false
+        velodyne_motor:
+          Value: false
+        wheel_1:
+          Value: false
+        wheel_2:
+          Value: false
+        wheel_3:
+          Value: false
+        wheel_4:
+          Value: false
+        world:
+          Value: true
+      Marker Alpha: 1
+      Marker Scale: 1
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        world:
+          pelvis:
+            D435i_camera_bottom_screw_frame:
+              D435i_camera_link:
+                D435i_camera_accel_frame:
+                  D435i_camera_accel_optical_frame:
+                    {}
+                D435i_camera_depth_frame:
+                  D435i_camera_color_frame:
+                    D435i_camera_color_optical_frame:
+                      {}
+                  D435i_camera_depth_optical_frame:
+                    {}
+                  D435i_camera_left_ir_frame:
+                    D435i_camera_left_ir_optical_frame:
+                      {}
+                  D435i_camera_right_ir_frame:
+                    D435i_camera_right_ir_optical_frame:
+                      {}
+                D435i_camera_gyro_frame:
+                  D435i_camera_gyro_optical_frame:
+                    {}
+            T265_camera_pose_frame:
+              T265_camera_link:
+                T265_camera_accel_frame:
+                  T265_camera_accel_optical_frame:
+                    {}
+                T265_camera_fisheye1_rgb_frame:
+                  T265_camera_fisheye1_optical_frame:
+                    {}
+                T265_camera_fisheye2_rgb_frame:
+                  T265_camera_fisheye2_optical_frame:
+                    {}
+                T265_camera_gyro_frame:
+                  T265_camera_gyro_optical_frame:
+                    {}
+            base_link:
+              {}
+            hip1_1:
+              hip2_1:
+                knee_1:
+                  ankle1_1:
+                    ankle2_1:
+                      contact_1:
+                        {}
+                      wheel_1:
+                        {}
+            hip1_2:
+              hip2_2:
+                knee_2:
+                  ankle1_2:
+                    ankle2_2:
+                      contact_2:
+                        {}
+                      wheel_2:
+                        {}
+            hip1_3:
+              hip2_3:
+                knee_3:
+                  ankle1_3:
+                    ankle2_3:
+                      contact_3:
+                        {}
+                      wheel_3:
+                        {}
+            hip1_4:
+              hip2_4:
+                knee_4:
+                  ankle1_4:
+                    ankle2_4:
+                      contact_4:
+                        {}
+                      wheel_4:
+                        {}
+            imu_link:
+              {}
+            torso_2:
+              arm1_1:
+                arm1_2:
+                  arm1_3:
+                    arm1_4:
+                      arm1_5:
+                        arm1_6:
+                          ball1:
+                            arm1_8:
+                              {}
+                            ball1_tip:
+                              {}
+              arm2_1:
+                arm2_2:
+                  arm2_3:
+                    arm2_4:
+                      arm2_5:
+                        arm2_6:
+                          dagana_2_top_link:
+                            dagana_2_bottom_link:
+                              arm2_8:
+                                {}
+                            dagana_2_tcp:
+                              {}
+              neck_1:
+                d435_head_motor:
+                  D435_head_camera_bottom_screw_frame:
+                    D435_head_camera_link:
+                      D435_head_camera_accel_frame:
+                        D435_head_camera_accel_optical_frame:
+                          {}
+                      D435_head_camera_depth_frame:
+                        D435_head_camera_color_frame:
+                          D435_head_camera_color_optical_frame:
+                            {}
+                        D435_head_camera_depth_optical_frame:
+                          {}
+                        D435_head_camera_left_ir_frame:
+                          D435_head_camera_left_ir_optical_frame:
+                            {}
+                        D435_head_camera_right_ir_frame:
+                          D435_head_camera_right_ir_optical_frame:
+                            {}
+                      D435_head_camera_gyro_frame:
+                        D435_head_camera_gyro_optical_frame:
+                          {}
+                velodyne_motor:
+                  velodyne_calib_base_link:
+                    velodyne_calib:
+                      {}
+      Update Interval: 0
       Value: true
     - Alpha: 1
       Autocompute Intensity Bounds: true
@@ -638,6 +859,34 @@ Visualization Manager:
       Color: 255; 255; 255
       Color Transformer: RGB8
       Decay Time: 0
+      Enabled: false
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Min Color: 0; 0; 0
+      Name: PointCloud2
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.009999999776482582
+      Style: Flat Squares
+      Topic: /D435_head_camera/depth/color/points
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: false
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: Intensity
+      Decay Time: 0
       Enabled: true
       Invert Rainbow: false
       Max Color: 255; 255; 255
@@ -649,14 +898,14 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.009999999776482582
       Style: Flat Squares
-      Topic: /D435i_camera/depth/color/points
+      Topic: /obstacle_detector/cloud_clusters
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
   Enabled: true
   Global Options:
-    Background Color: 0; 0; 0
+    Background Color: 48; 48; 48
     Default Light: true
     Fixed Frame: pelvis
     Frame Rate: 30
@@ -682,7 +931,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 5.8153076171875
+      Distance: 4.644041061401367
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -690,25 +939,25 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 0.900037944316864
-        Y: -0.3278746008872986
-        Z: -0.23819246888160706
-      Focal Shape Fixed Size: false
+        X: 1.249324083328247
+        Y: -0.7183570265769958
+        Z: -0.027286017313599586
+      Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.40479880571365356
+      Pitch: 0.34039831161499023
       Target Frame: <Fixed Frame>
-      Yaw: 4.920464515686035
+      Yaw: 3.540393114089966
     Saved: ~
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 1043
+  Height: 1520
   Hide Left Dock: false
   Hide Right Dock: false
-  QMainWindow State: 000000ff00000000fd00000004000000000000027500000373fc0200000009fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003d00000373000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000c00430061006d00650072006100000002090000011a0000000000000000000000010000010f00000373fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073010000003d00000373000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e100000197000000030000078000000040fc0100000002fb0000000800540069006d0065010000000000000780000003bc00fffffffb0000000800540069006d00650100000000000004500000000000000000000003f00000037300000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000004000000000000028a00000556fc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003b00000556000000c700fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000010f00000556fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073010000003b00000556000000a000fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e1000001970000000300000a000000003efc0100000002fb0000000800540069006d0065010000000000000a000000030700fffffffb0000000800540069006d006501000000000000045000000000000000000000065b0000055600000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:
@@ -717,6 +966,6 @@ Window Geometry:
     collapsed: false
   Views:
     collapsed: false
-  Width: 1920
-  X: 2560
-  Y: 235
+  Width: 2560
+  X: 0
+  Y: 0
