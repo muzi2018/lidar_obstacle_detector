@@ -4,14 +4,14 @@ dictitems:
   cluster_min_size: 10
   cluster_threshold: 0.6
   displacement_threshold: 1.0
-  ground_threshold: 0.01
+  ground_threshold: 0.11
   groups: !!python/object/new:dynamic_reconfigure.encoding.Config
     dictitems:
       cluster_max_size: 5000
       cluster_min_size: 10
       cluster_threshold: 0.6
       displacement_threshold: 1.0
-      ground_threshold: 0.01
+      ground_threshold: 0.11
       groups: !!python/object/new:dynamic_reconfigure.encoding.Config
         state: []
       id: 0
@@ -30,7 +30,7 @@ dictitems:
       type: ''
       use_pca_box: false
       use_tracking: true
-      voxel_grid_size: 0.05
+      voxel_grid_size: 0.11
     state: []
   iou_threshold: 1.0
   roi_max_x: 41.0
@@ -41,5 +41,5 @@ dictitems:
   roi_min_z: -2.5
   use_pca_box: false
   use_tracking: true
-  voxel_grid_size: 0.05
+  voxel_grid_size: 0.11
 state: []

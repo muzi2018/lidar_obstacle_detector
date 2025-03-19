@@ -158,7 +158,7 @@ void ObstacleDetectorNode::lidarPointsCallback(
    * | ROI|    |
    * | ___|    |
    * |         |
-   * ----------
+   * ---------- 
    */
   auto filtered_cloud = obstacle_detector->filterCloud(
       raw_cloud, VOXEL_GRID_SIZE, ROI_MIN_POINT, ROI_MAX_POINT);
